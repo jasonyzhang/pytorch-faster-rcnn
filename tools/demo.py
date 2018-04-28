@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # --------------------------------------------------------
 # Tensorflow Faster R-CNN
@@ -14,6 +14,9 @@ See README.md for installation instructions before running.
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 import _init_paths
 from model.config import cfg
@@ -113,6 +116,7 @@ def parse_args():
 
 if __name__ == '__main__':
     cfg.TEST.HAS_RPN = True  # Use RPN for proposals
+    cfg.USE_GPU_NMS =False
     args = parse_args()
 
     # model path
